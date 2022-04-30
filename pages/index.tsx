@@ -1,13 +1,19 @@
 import type { NextPage } from 'next';
-import { Button, Htag, P, Tag } from '../components';
+import { useEffect, useState } from 'react';
+import { Button, Htag, P, Rating, Tag } from '../components';
 
 
 const Home: NextPage = () => {
+	const [counter, setCounter] = useState<number>(0);
+
+	useEffect(() => {
+		console.log('Counter: ' + counter);
+	}, [counter])
 	return (
 		<>
-			<Htag tag='h2'>Hello World</Htag>
-			<Button appearance='primary' arrow='right'>Кнопка</Button>
-			<Button appearance='ghost' arrow='down'>Кнопка</Button>
+			<Htag tag='h2'>{counter}</Htag>
+			<Button appearance='primary' arrow='right' onClick={() => setCounter(x => x + 1)}>Кнопка</Button>
+			<Button appearance='ghost' arrow='down' onClick={() => setCounter(0)}>Кнопка</Button>
 			<P size='l'>Большой</P>
 			<P >Средний</P>
 			<P size='s'>Маленький</P>
@@ -17,6 +23,7 @@ const Home: NextPage = () => {
 			<Tag color='green'>Green</Tag>
 			<Tag size='m' color='gray'>Gray</Tag>
 			<Tag color='ghost'>Ghost</Tag>
+			<Rating rating={2}/>
 		</>
 	);
 }
