@@ -9,6 +9,8 @@ const Home: NextPage = () => {
 	useEffect(() => {
 		console.log('Counter: ' + counter);
 	}, [counter])
+
+	const [rating, setRating] = useState<number>(4);
 	return (
 		<>
 			<Htag tag='h2'>{counter}</Htag>
@@ -23,7 +25,7 @@ const Home: NextPage = () => {
 			<Tag color='green'>Green</Tag>
 			<Tag size='m' color='gray'>Gray</Tag>
 			<Tag color='ghost'>Ghost</Tag>
-			<Rating rating={2}/>
+			<Rating rating={rating} isEditable setRating={setRating}/>
 		</>
 	);
 }
